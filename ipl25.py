@@ -16,7 +16,8 @@ st.set_page_config(
 # ================= LOAD DATA =================
 
 df = pd.read_csv(
-    "ipl2008-25.csv",
+    "ipl_data.csv.gz",
+    compression="gzip",
     low_memory=False
 )
 
