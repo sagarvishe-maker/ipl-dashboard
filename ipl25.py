@@ -199,6 +199,7 @@ div[data-testid="stMetric"]{
 col1, col2 = st.columns([1,5])
 
 with col1:
+    pass
 
     # st.image(
     #     "logos/ipl.jpeg",
@@ -206,18 +207,19 @@ with col1:
     # )
 
 with col2:
+    pass
 
-    st.markdown("""
-    <h1 style='color:#60a5fa;'>
-   🏏 IPL DASHBOARD
-    </h1>
+#     st.markdown("""
+#     <h1 style='color:#60a5fa;'>
+#    🏏 IPL DASHBOARD
+#     </h1>
 
-    <h4 style='color:gray;'>
-    IPL Data Analysis 2008 - 2025
-    </h4>
-    """, unsafe_allow_html=True)
+#     <h4 style='color:gray;'>
+#     IPL Data Analysis 2008 - 2025
+#     </h4>
+#     """, unsafe_allow_html=True)
 
-st.markdown("---")
+# st.markdown("---")
 
 # ================= FILTERS =================
 
