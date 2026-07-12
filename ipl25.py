@@ -147,12 +147,13 @@ def show_logo(team_name, width=120):
         logo_path = teams_logos[team_name]
 
         if os.path.exists(logo_path):
-            pass
 
-            # st.image(
-            #     logo_path,
-            #     width=width
-            # )
+            
+
+            st.image(
+                logo_path,
+                width=width
+            )
 
 # ================= COLORS =================
 
@@ -199,27 +200,27 @@ div[data-testid="stMetric"]{
 col1, col2 = st.columns([1,5])
 
 with col1:
-    pass
+    
 
-    # st.image(
-    #     "logos/ipl.jpeg",
-    #     width=110
-    # )
+    st.image(
+        "logos/ipl.jpeg",
+        width=110
+    )
 
 with col2:
-    pass
+    
 
-#     st.markdown("""
-#     <h1 style='color:#60a5fa;'>
-#    🏏 IPL DASHBOARD
-#     </h1>
+    st.markdown("""
+    <h1 style='color:#60a5fa;'>
+   🏏 IPL DASHBOARD
+    </h1>
 
-#     <h4 style='color:gray;'>
-#     IPL Data Analysis 2008 - 2025
-#     </h4>
-#     """, unsafe_allow_html=True)
+    <h4 style='color:gray;'>
+    IPL Data Analysis 2008 - 2025
+    </h4>
+    """, unsafe_allow_html=True)
 
-# st.markdown("---")
+st.markdown("---")
 
 # ================= FILTERS =================
 
