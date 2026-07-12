@@ -148,10 +148,10 @@ def show_logo(team_name, width=120):
 
         if os.path.exists(logo_path):
 
-            st.image(
-                logo_path,
-                width=width
-            )
+            # st.image(
+            #     logo_path,
+            #     width=width
+            # )
 
 # ================= COLORS =================
 
@@ -199,10 +199,10 @@ col1, col2 = st.columns([1,5])
 
 with col1:
 
-    st.image(
-        "logos/ipl.jpeg",
-        width=110
-    )
+    # st.image(
+    #     "logos/ipl.jpeg",
+    #     width=110
+    # )
 
 with col2:
 
