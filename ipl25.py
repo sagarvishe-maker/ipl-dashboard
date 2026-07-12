@@ -147,6 +147,7 @@ def show_logo(team_name, width=120):
         logo_path = teams_logos[team_name]
 
         if os.path.exists(logo_path):
+            pass
 
             # st.image(
             #     logo_path,
