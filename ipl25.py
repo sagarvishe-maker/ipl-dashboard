@@ -373,11 +373,12 @@ if selected_season != "All":
             """, unsafe_allow_html=True)
 
         with w2:
+            pass
 
-            show_logo(
-                winner_team,
-                200
-            )
+            # show_logo(
+            #     winner_team,
+            #     200
+            # )
 
 st.markdown("---")
 
