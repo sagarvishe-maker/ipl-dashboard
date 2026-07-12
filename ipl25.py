@@ -147,14 +147,14 @@ def show_logo(team_name, width=120):
         logo_path = teams_logos[team_name]
 
         if os.path.exists(logo_path):
-            pass
+            
 
             
 
-            # st.image(
-            #     logo_path,
-            #     width=width
-            # )
+            st.image(
+                logo_path,
+                width=width
+            )
 
 # ================= COLORS =================
 
@@ -201,13 +201,13 @@ div[data-testid="stMetric"]{
 col1, col2 = st.columns([1,5])
 
 with col1:
-    pass
+    
     
 
-    # st.image(
-    #     "logos/ipl.jpeg",
-    #     width=110
-    # )
+    st.image(
+        "logos/ipl.jpeg",
+        width=110
+    )
 
 with col2:
     
@@ -373,12 +373,12 @@ if selected_season != "All":
             """, unsafe_allow_html=True)
 
         with w2:
-            pass
+            
 
-            # show_logo(
-            #     winner_team,
-            #     200
-            # )
+            show_logo(
+                winner_team,
+                200
+            )
 
 st.markdown("---")
 
@@ -646,72 +646,72 @@ with r5:
 
 
 
-#  # ================= PLAYING XI (ONLY FOR PLAYER/TEAM VIEW) =================
+ # ================= PLAYING XI (ONLY FOR PLAYER/TEAM VIEW) =================
 
-# # ❌ Hide if Season = All
-# if selected_season != "All":
+# ❌ Hide if Season = All
+if selected_season != "All":
 
-#     st.markdown("---")
+    st.markdown("---")
 
-#     st.markdown("""
-#     <h2 style='text-align:center;color:#60a5fa;'>
-#     🏏 Playing XI
-#     </h2>
-#     """, unsafe_allow_html=True)
+    st.markdown("""
+    <h2 style='text-align:center;color:#60a5fa;'>
+    🏏 Playing XI
+    </h2>
+    """, unsafe_allow_html=True)
 
-#     # ---------------- BATTERS ----------------
-#     batters = filtered_df.groupby('batter').agg(
-#         runs=('runs_batter', 'sum'),
-#         matches=('match_id', 'nunique')
-#     ).reset_index().rename(columns={'batter': 'player'})
+    # ---------------- BATTERS ----------------
+    batters = filtered_df.groupby('batter').agg(
+        runs=('runs_batter', 'sum'),
+        matches=('match_id', 'nunique')
+    ).reset_index().rename(columns={'batter': 'player'})
 
-#     # ---------------- BOWLERS ----------------
-#     bowlers = filtered_df.groupby('bowler').agg(
-#         wickets=('wicket_kind', 'count'),
-#         matches=('match_id', 'nunique')
-#     ).reset_index().rename(columns={'bowler': 'player'})
+    # ---------------- BOWLERS ----------------
+    bowlers = filtered_df.groupby('bowler').agg(
+        wickets=('wicket_kind', 'count'),
+        matches=('match_id', 'nunique')
+    ).reset_index().rename(columns={'bowler': 'player'})
 
-#     # ---------------- MERGE ----------------
-#     players = pd.merge(batters, bowlers, on='player', how='outer').fillna(0)
+    # ---------------- MERGE ----------------
+    players = pd.merge(batters, bowlers, on='player', how='outer').fillna(0)
 
-#     # ---------------- FIX MATCHES (IMPORTANT) ----------------
-#     players['matches'] = players[['matches_x', 'matches_y']].max(axis=1)
-#     players = players.drop(columns=['matches_x', 'matches_y'], errors='ignore')
+    # ---------------- FIX MATCHES (IMPORTANT) ----------------
+    players['matches'] = players[['matches_x', 'matches_y']].max(axis=1)
+    players = players.drop(columns=['matches_x', 'matches_y'], errors='ignore')
 
-#     # ---------------- ROLE LOGIC ----------------
-#     def assign_role(r):
-#         if r['wickets'] >= 15 and r['runs'] < 250:
-#             return "⚾ Bowler"
-#         elif r['runs'] >= 400 and r['wickets'] >= 8:
-#             return "🔄 All-Rounder"
-#         else:
-#             return "🏏 Batsman"
+    # ---------------- ROLE LOGIC ----------------
+    def assign_role(r):
+        if r['wickets'] >= 15 and r['runs'] < 250:
+            return "⚾ Bowler"
+        elif r['runs'] >= 400 and r['wickets'] >= 8:
+            return "🔄 All-Rounder"
+        else:
+            return "🏏 Batsman"
 
-#     players['Role'] = players.apply(assign_role, axis=1)
+    players['Role'] = players.apply(assign_role, axis=1)
 
-#     # ---------------- IMPACT SCORE ----------------
-#     players['impact'] = players['runs'] + (players['wickets'] * 25)
+    # ---------------- IMPACT SCORE ----------------
+    players['impact'] = players['runs'] + (players['wickets'] * 25)
 
-#     # ---------------- TOP 11 ----------------
-#     top11 = players.sort_values('impact', ascending=False).head(11)
+    # ---------------- TOP 11 ----------------
+    top11 = players.sort_values('impact', ascending=False).head(11)
 
-#     # ---------------- ROLE ORDER ----------------
-#     role_order = {
-#         "🏏 Batsman": 1,
-#         "🔄 All-Rounder": 2,
-#         "⚾ Bowler": 3
-#     }
+    # ---------------- ROLE ORDER ----------------
+    role_order = {
+        "🏏 Batsman": 1,
+        "🔄 All-Rounder": 2,
+        "⚾ Bowler": 3
+    }
 
-#     top11['order'] = top11['Role'].map(role_order)
+    top11['order'] = top11['Role'].map(role_order)
 
-#     top11 = top11.sort_values(
-#         by=['order', 'impact'],
-#         ascending=[True, False]
-#     )
+    top11 = top11.sort_values(
+        by=['order', 'impact'],
+        ascending=[True, False]
+    )
 
-#     # ---------------- FINAL TABLE (Role REMOVED) ----------------
-#     st.dataframe(
-#         top11[['player', 'runs', 'wickets', 'matches']],
-#         use_container_width=True,
-#         hide_index=True
-#     )
+    # ---------------- FINAL TABLE (Role REMOVED) ----------------
+    st.dataframe(
+        top11[['player', 'runs', 'wickets', 'matches']],
+        use_container_width=True,
+        hide_index=True
+    )
